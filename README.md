@@ -1,5 +1,3 @@
-# Calory-Tracker
-Web-application for tracking calorie intake 
 # Meal Tracker Web App
 
 ![App Screenshot](screenshot.png)
