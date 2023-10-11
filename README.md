@@ -1,4 +1,4 @@
-# Meal Tracker Web App
+# :bento: Meal Tracker Web App
 
 ![App Screenshot](screenshot.png)
 
