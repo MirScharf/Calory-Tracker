@@ -2,8 +2,20 @@ import express, { request, response } from "express";
 import { PORT, mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
 import { Meal } from "./models/recipyModels.js";
+import cookieParser from "cookie-parser";
+
+
 
 const app = express();
+
+const corsOptions = {
+    origin: 'http://localhost:5000', // front-end domain
+    methods: 'GET, POST, PUT, DELETE', // allowed HTTP methods.
+    credentials: true, // Enable credentials (cookies and HTTP authentication)
+  };
+app.use(cors(corsOptions));
+
+app.use(cookieParser())
 
 // Middleware for parsing request body
 app.use(express.json());
