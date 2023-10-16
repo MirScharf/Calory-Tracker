@@ -3,8 +3,8 @@ import { PORT, mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
 import { Meal } from "./models/recipyModels.js";
 import cookieParser from "cookie-parser";
-
-
+import authRoute from "./models/authRoute.js"
+import cors from "cors"
 
 const app = express();
 
@@ -26,6 +26,8 @@ const requestTime = function (request, response, next) {
   }
 
 app.use(requestTime);
+
+app.use('/login', authRoute)
 
 // Give routing to / 
 app.get('/', (request, response) => {   

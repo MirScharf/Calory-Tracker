@@ -1,6 +1,6 @@
 import { createSecretToken } from "./secretToken.js";
 import { User } from "./userModels.js";
-import bcrypt from "bcryptjs"
+// import bcrypt from "bcryptjs"
 
 
 // Checks if User (in request.body) is new. Creates new User 
@@ -24,3 +24,4 @@ const login = async (request, response, next) => {
         response.send({ message: error.message});
     }
 }
+export { login }
