@@ -27,7 +27,7 @@ const requestTime = function (request, response, next) {
 
 app.use(requestTime);
 
-app.use('/login', authRoute)
+app.use('/', authRoute)
 
 // Give routing to / 
 app.get('/', (request, response) => {   
