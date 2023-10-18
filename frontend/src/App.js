@@ -1,10 +1,17 @@
 // import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import { Home, Login, Register } from './pages';
 
 function App() {
   return (
     <div className="App">
-      <h1>Caloric Intake Tracker</h1>
+      <h2 id='title'>Caloric Intake Tracker</h2>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+      </Routes>
     </div>
   );
 }
