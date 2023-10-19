@@ -1,0 +1,14 @@
+#landingPageText {
+    font-style: italic;
+    background-color:beige;
+    border-style: groove;
+    border: solid black;
+    margin: 4px;
+}
+.links {
+    background-color:beige;
+    border-style: groove;
+    border: solid black;
+    padding: 3px;
+    border-radius: 10%;
+}
