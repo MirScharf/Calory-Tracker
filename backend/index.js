@@ -4,12 +4,13 @@ import mongoose from "mongoose";
 import { Meal } from "./models/recipyModels.js";
 import cookieParser from "cookie-parser";
 import authRoute from "./models/authRoute.js"
+import userRoute from "./models/userRoute.js"
 import cors from "cors"
 
 const app = express();
 
 const corsOptions = {
-    origin: 'http://localhost:5000', // front-end domain
+    origin: 'http://localhost:3000', // front-end domain
     methods: 'GET, POST, PUT, DELETE', // allowed HTTP methods.
     credentials: true, // Enable credentials (cookies and HTTP authentication)
   };
@@ -29,6 +30,8 @@ app.use(requestTime);
 
 app.use('/', authRoute)
 
+app.use('/user', userRoute)
+
 // Give routing to / 
 app.get('/', (request, response) => {   
   console.log(request);
@@ -46,12 +49,15 @@ app.get('/allmeals', async (request, response) => {
     }
 });
 
+
+
+/// ---------- The folowing endpoints were created for testing purposes and are not in use -------
+
 // Post a Review to a list param 
 // Do not allow multiple reviews for the same author
 app.post('/meals/:title/reviews', async (request,response) => {
   const { title } = request.params;
   const { text, author } = request.body;
-
   try {
     const meal = await Meal.findOne({ title });
     if (meal.length == 0){
@@ -157,37 +163,6 @@ app.get('/meals/:_id', async (request,response) => {
       console.error(error.message);
       response.status(500).json({ message: 'Server error' });
     }
-});
-
-// route for saving a new Meal 
-app.post('/meals', async(request, response)=> {
-    try {
-        if (
-            !request.body.title || 
-            !request.body.author || 
-            !request.body.publishYear 
-            
-        ) {
-            return response.status(400).send({
-            message :"Send all required fields: title, author, publishYear"
-        });
-        }
-        const newMeal = {
-            title: request.body.title,
-            author: request.body.author,
-            publishYear: request.body.publishYear,
-        };
-
-        const meal = await Meal.create(request.body);
-
-        return response.status(201).send(meal);
-
-
-    } catch (error) {
-        console.log(error.message);
-        response.status(500).send({ message: error.message});
-    }
-    
 });
 
 mongoose.connect(mongoDBURL)
