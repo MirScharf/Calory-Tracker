@@ -1,9 +1,7 @@
 import { User } from "./userModels.js";
-import pkg from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import dotenv from 'dotenv';
-import { request, response } from "express";
 dotenv.config();
-const { jwt } = pkg;
 
 export const userVerification = (request, response) => {
     const token = request.cookies.token
@@ -12,7 +10,7 @@ export const userVerification = (request, response) => {
     }
     jwt.verify(token, process.env.TOKEN_KEY, async (error, data) => {
         if (error) {
-            return response.json({ staatus: false})
+            return response.json({ status: false})
         } else {
             const user = await User.findById(data.id)
             if (user) {
@@ -20,8 +18,6 @@ export const userVerification = (request, response) => {
             } else {
                 return response.json({ status: false })
             }
-            
         }
-
     })
 }
