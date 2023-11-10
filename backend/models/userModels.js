@@ -2,6 +2,11 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
 
+const caloryIntake= mongoose.Schema({
+    day: String,
+    calories: Number,
+})
+
 const userSchema = mongoose.Schema({
     username: {
         type: String,
@@ -11,7 +16,8 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    caloryIntake: [caloryIntake],
 },
 {
     timestamps: true,
