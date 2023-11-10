@@ -1,6 +1,6 @@
 # :bento: Meal Tracker Web App
 
-![App Screenshot](screenshot.png)
+![App Screenshot](recipyHubScreenshot.png)
 
 ## Table of Contents
 
