@@ -6,7 +6,10 @@
     "cors": "^2.8.5",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.0",
+    "plotly.js": "^2.27.1",
+    "plotly.js-dist": "^2.27.1",
     "react-cookie": "^6.1.1",
+    "react-plotly.js": "^2.6.0",
     "react-router-dom": "^6.17.0",
     "react-toastify": "^9.1.3"
   }
