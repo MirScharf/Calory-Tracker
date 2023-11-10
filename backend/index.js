@@ -7,6 +7,18 @@ import authRoute from "./models/authRoute.js"
 import userRoute from "./models/userRoute.js"
 import cors from "cors"
 
+mongoose.connect(mongoDBURL)
+    .then(() => {
+        console.log("Connected to MongoDB")
+        // runs express server
+        app.listen(PORT, () => {
+            console.log(`App is on port: ${PORT}`); 
+        });
+    })
+    .catch(() => {
+        console.error("connection failed", 500)
+    });
+
 const app = express();
 
 const corsOptions = {
@@ -22,7 +34,9 @@ app.use(cookieParser())
 app.use(express.json());
 
 const requestTime = function (request, response, next) {
-    request.requestTime = new Date(Date.now()).toString()
+    const date = new Date()
+    const fullDate = `${date.getDay()}.${date.getMonth()}.${date.getFullYear()}`
+    request.requestTime = fullDate
     next()
   }
 
@@ -165,14 +179,3 @@ app.get('/meals/:_id', async (request,response) => {
     }
 });
 
-mongoose.connect(mongoDBURL)
-    .then(() => {
-        console.log("Connected to MongoDB")
-        // runs express server
-        app.listen(PORT, () => {
-            console.log(`App is on port: ${PORT}`); 
-        });
-    })
-    .catch(() => {
-        console.error("connection failed", 500)
-    });
