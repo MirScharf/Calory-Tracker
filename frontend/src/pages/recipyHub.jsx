@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import '../styles/RecipyHub.css';
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import CaloryChart from "../components/CaloryChart";
+import MealCreationForm from "../components/MealCreationForm";
+import { getAllMeals } from "../utils/api_getAllMeals";
 
 const RecipyHub = () => {
     const navigate = useNavigate();
@@ -22,13 +24,14 @@ const RecipyHub = () => {
     
     
     // Get all Meals/Recipys from backend
-    // Save meals via useState 
-    const getAllMeals = () => axios({
-        method: 'GET',
-        url: 'http://localhost:5555/allmeals'
-        }).then((response) => {
-        setAllMeals(response.data)
-         }).catch((error) => console.log(error));
+    useLayoutEffect(() => {
+        const getMealsList = async () => {
+        const mealList = await getAllMeals()
+        console.log(mealList);
+        setAllMeals(mealList)
+        }
+        getMealsList()
+    }, [user])
 
     useEffect(() => {
         const verifyCookie = async () => {
@@ -52,11 +55,8 @@ const RecipyHub = () => {
           autoClose: 1000,
           hideProgressBar: true,
           toastId: 'success2',
-        })
-        
-        getAllMeals();
-        
-        }, [cookies, navigate, removeCookie])
+        })        
+    }, [cookies, navigate, removeCookie])
         
     // Button: Removes meals from currentMeals   
     const handleSubtractButton = (itemToRemove) => {
@@ -224,7 +224,6 @@ const RecipyHub = () => {
         <input type="checkbox" id="checkbox" checked={checkboxChecked} onChange={handleCheckboxChange}></input>
         </label>
             {allMealsJsx}
-            
         </div>
         
         {/* List of current Meals */}
@@ -240,18 +239,7 @@ const RecipyHub = () => {
         </div>
 
         {/* Meal creation form */}
-        <div>
-            <form onSubmit={handleSubmitMealCreation}  id="mealCreationForm">
-                <p id="mealCreationHeadline">Create your own Recipy/Meal!</p>
-                <label>Meal title: </label>
-                <input type="text" name="title"/><br></br>
-                <label>Calories: </label>
-                <input type="text" name="calories"/><br></br>
-                <label>Ingredients: </label>
-                <input type="text" name="ingredients"/><br></br>
-                <button type="submit">Create Meal</button>
-            </form>
-        </div>
+        <MealCreationForm />
     </div>
     )
 }
