@@ -1,0 +1,132 @@
+p {
+    font-size: 15px;
+}
+
+#allMealsContainer{
+    margin-left: 1rem;
+    max-width: 200px;
+    font-size: 1.2rem;
+    float: left;
+}
+
+#allMealsHeadline {
+    margin-left: 3rem;
+    font-size: 1.1rem;
+    text-decoration: underline;
+}
+
+#allMeals {
+    margin: 1rem;
+    max-width: 200px;
+    border: solid black;
+    border-style: groove;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 4px 4px 5px 0.5px rgb(63, 63, 63);
+    }
+
+#allMeals:hover {
+    background-color:rgb(253, 245, 157);
+}
+
+#addButton {
+    float: right;
+    margin-top: 2rem;
+    margin-right: 0.5rem;
+    background-color: rgb(182, 237, 182);
+   
+}
+
+#addButton:active {
+    background-color: rgb(212, 243, 208);
+
+}
+#substractButton {
+    float: right;
+    margin-top: 2rem;
+    margin-right: 0.5rem;
+    background-color: rgb(218, 136, 136)
+   
+}
+
+#substractButton:active {
+    background-color: rgb(245, 187, 187);
+
+}
+
+#scrollContainer {
+    margin-left: 1rem;
+    width: 15rem;
+    max-height: 40rem;
+    
+    border: solid black 2px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+/* Current meals */
+#currentMeals {
+    float: left;
+    margin-left: 10rem;
+}
+
+#currentMealsHeadline {
+    text-decoration: underline;
+    font-size: 1.1rem;
+    margin-bottom: 1.45rem;
+}
+
+/* Calory chart */
+#chartHeadline {
+    text-decoration: underline;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+#caloryChart {
+    float: left;
+    margin-left: 5rem;
+}
+
+
+
+/* Meal creation form */
+#mealCreationHeadline{
+    text-decoration: underline;
+}
+
+#mealCreationForm {
+    margin-top: 4.5rem;
+    margin-left: 5rem;
+    padding: 1rem;
+    border: solid black 2px;
+    float: left;
+    box-shadow: 4px 4px 4px 2px rgb(63, 63, 63);
+
+}
+
+#mealCreationForm > label, form > p{
+    margin-top: 0px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+#mealCreationForm > input {
+    display: flex;
+    margin-top: 3px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+#mealFilter {
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    margin-left: 4rem;
+}
+#mealName {
+    margin-left: 3.3rem;
+    max-width: 7.2rem;
+}
+
+div {
+    font-weight: bold;
+}
