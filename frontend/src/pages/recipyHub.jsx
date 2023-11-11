@@ -1,11 +1,11 @@
 import React from "react";
-import './RecipyHub.css';
+import '../styles/RecipyHub.css';
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import Plot from "react-plotly.js";
+import CaloryChart from "../components/CaloryChart";
 
 const RecipyHub = () => {
     const navigate = useNavigate();
@@ -19,7 +19,6 @@ const RecipyHub = () => {
     const [sum, setSum] = useState();
     const [checkboxChecked, setCheckboxChecked] = useState(false);
     const [previousCalories, setPreviousCalories] = useState([]);
-    const [chartCaloryTracking, setChartCaloryTracking] = useState([]);
     
     
     // Get all Meals/Recipys from backend
@@ -149,6 +148,7 @@ const RecipyHub = () => {
         }
     }
     
+    // Get Array of previously submitted caloric intake
     useEffect(() => {
         if(!user){return}
         const fetchData = async () => {
@@ -209,39 +209,7 @@ const RecipyHub = () => {
             calories: calories,
         }})
         setPreviousCalories(getPreviousCalories)
-    }
-    
-    useEffect(() => {
-        const currenChart = () => {
-            if (!previousCalories | !previousCalories.length){return}
-            const lastWeeksCaloricIntake = previousCalories.slice(Math.max(previousCalories.length - 7, 0))
-            const data = [
-                {
-                  type: "scatter",
-                  mode: "lines+markers",
-                  x: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
-                  y: lastWeeksCaloricIntake, 
-                  marker: { color: "blue" },
-                },
-            ];
-          
-            const layout = {
-                title: "Last Week's Caloric Intake",
-                xaxis: { title: "Previous Seven Days"},
-                yaxis: { title: "Calories" },
-                font: { size: 14 },
-            };
-          
-            return (
-                <div>
-                    <h3 id="chartHeadline">Monitor your daily caloric intake</h3>
-                    <Plot data={data} layout={layout} />
-                </div>
-            );
-          };
-        setChartCaloryTracking(currenChart)
-    },[previousCalories])
-    
+    }  
     
     return (
         <div>
@@ -256,6 +224,7 @@ const RecipyHub = () => {
         <input type="checkbox" id="checkbox" checked={checkboxChecked} onChange={handleCheckboxChange}></input>
         </label>
             {allMealsJsx}
+            
         </div>
         
         {/* List of current Meals */}
@@ -265,9 +234,9 @@ const RecipyHub = () => {
         {currentListJsx}
         </div>
 
-        {/* Calory Chart */}
+        {/* Calory Chart component */}
         <div id="caloryChart">
-            {chartCaloryTracking}
+            <CaloryChart previousCalories={previousCalories}/>
         </div>
 
         {/* Meal creation form */}
@@ -287,4 +256,4 @@ const RecipyHub = () => {
     )
 }
 
-export default RecipyHub;
+export default RecipyHub;;
