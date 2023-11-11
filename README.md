@@ -1,4 +1,4 @@
-# :bento: Meal Tracker Web App
+# :bento: Calory Tracker Web App
 
 ![App Screenshot](recipyHubScreenshot.PNG)
 
@@ -15,7 +15,7 @@
 
 ## Introduction
 
-The Meal Tracker Web App is a full-stack application designed to help users track their daily caloric intake by logging their consumed meals and recipes. This app is built using the MERN stack, consisting of MongoDB, Express, React, and Node.js. It offers an intuitive user interface for managing meals and visualizing calorie consumption.
+The Calory Tracker Web App is a full-stack application designed to help users track their daily caloric intake by logging their consumed meals and recipes. This app is built using the MERN stack, consisting of MongoDB, Express, React, and Node.js. It offers an intuitive user interface for managing meals and visualizing calorie consumption.
 
 ## Features
 
