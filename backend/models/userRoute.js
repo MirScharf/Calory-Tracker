@@ -4,6 +4,7 @@ import { User } from "./userModels.js"
 
 const router = express.Router();
 
+// Fn for meal creation form on /recipyhub
 const postRecipy = async(request, response)=> {
     try {
         if (
@@ -30,6 +31,7 @@ const postRecipy = async(request, response)=> {
     }
 };
 
+// Fn for current-day caloric intake submission
 const postCalories = async(request, response)=> {
     try {
         if (!request.body.calories){
@@ -51,6 +53,7 @@ const postCalories = async(request, response)=> {
 
 }
 
+// Fn for getting user's caloric intake history
 const getCalories = async(request, response) => {
     try {
         const { username } = request.body;
