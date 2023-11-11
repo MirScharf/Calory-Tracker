@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/App.css';
 import { Route, Routes } from 'react-router-dom';
 import { Home, Login, Register, RecipyHub } from './pages';
 import { ToastContainer } from "react-toastify";
