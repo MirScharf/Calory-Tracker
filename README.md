@@ -7,11 +7,8 @@
 - [Introduction](#introduction)
 - [Features](#features)
 - [Technologies](#technologies)
-- [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Screenshots](#screenshots)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
@@ -30,3 +27,17 @@ The Calory Tracker Web App is a full-stack application designed to help users tr
 - **Frontend**: React
 - **Backend**: Node.js, Express.js, MongoDB, Mongoose
 - **Authentication**: JSON Web Tokens (JWT)
+
+## Usage 
+- Register/Log in  with a username and a password 
+- **RecipyHub**: Add Meals to the current Meal List with the "+" button 
+- Submit your caloric Intake for today with the button on top of the current Meal List 
+- Track your caloric Intake with the chart 
+- Create and submit your own Recipy's/Meals with the Mealcreation-form on the right
+
+## Screenshots
+- **User Login page**
+![App Screenshot](homePageScreenshot.PNG)
+- **Home Page**
+![App Screenshot](loginScreenshot.PNG)
+
