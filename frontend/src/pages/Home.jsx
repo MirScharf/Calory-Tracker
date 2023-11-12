@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Navibar from "../components/NavbarComp";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -51,6 +52,8 @@ const Home = () => {
   return (
     <div style={styles}>
     <h3>Home Page</h3>
+    <Navibar user={username} />
+
     <p>Welcome <span>{username}!</span></p>
     <div><Link to="/recipyHub">Visit the Recipy Hub!</Link></div>
     <div id="landingPageText">Track Your Way to a Healthier You! With the Caloric Intake Tracker, 
