@@ -5,7 +5,6 @@ import { getAllMeals } from "../utils/api_getAllMeals";
 
 const MealCreationForm = () => {
     const handleSubmitMealCreation = async (e) => {  
-        e.preventDefault();  // Default behaviour would refresh page
         
         // Meal creation: form input 
         const form = e.target;
