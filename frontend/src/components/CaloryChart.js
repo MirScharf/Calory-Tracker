@@ -22,7 +22,7 @@ const CaloryChart = ({ previousCalories }) => {
             };
   
     return (
-      <div>
+      <div id="caloryChart">
         <h3 id="chartHeadline">Monitor your daily caloric intake</h3>
         <Plot data={data} layout={layout} />
       </div>
