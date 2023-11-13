@@ -22,7 +22,7 @@ const RecipyHub = () => {
     const [sum, setSum] = useState();
     const [checkboxChecked, setCheckboxChecked] = useState(false);
     const [previousCalories, setPreviousCalories] = useState([]);
-    
+    const [submittedDays, setSubmittedDays] = useState([]);
     
     // Get all Meals/Recipys from backend
     useLayoutEffect(() => {
@@ -142,8 +142,10 @@ const RecipyHub = () => {
             if (!user){return}
             const response = await axios.post('http://localhost:5555/user/getcalories', { username: user });
             let caloryArr = response.data.map(item => item.calories);
+            let dateArr = response.data.map(item => item.day);
             setPreviousCalories(caloryArr);
-            return caloryArr;
+            setSubmittedDays(dateArr);
+            return [caloryArr, dateArr];
         } catch (error) {
             console.log(error)
         }
@@ -153,7 +155,7 @@ const RecipyHub = () => {
     useEffect(() => {
         if(!user){return}
         const fetchData = async () => {
-            const arr = await getPreviousCalories();
+            const arr = await getPreviousCalories()[0];
             if (arr){setPreviousCalories(arr)}       
         };
         fetchData();
@@ -200,8 +202,8 @@ const RecipyHub = () => {
     const handleSubmitcurrentCalories = async () => {  
         const calories = sum;
         const date = new Date()
-        const fullDate = `${date.getDay()}.${date.getMonth()}.${date.getFullYear()}`
-        await axios({
+        const fullDate = `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}`
+        const response = await axios({
         method: 'POST',
         url: 'http://localhost:5555/user/postcalories',
         data: {
@@ -209,7 +211,9 @@ const RecipyHub = () => {
             day: fullDate,
             calories: calories,
         }})
-        setPreviousCalories(getPreviousCalories)
+        console.log(response.data);
+        setPreviousCalories(getPreviousCalories().calories)
+        setSubmittedDays(getPreviousCalories().day)
     }  
     
     return (
@@ -237,7 +241,7 @@ const RecipyHub = () => {
         </div>
 
         {/* Calory Chart component */}
-        <CaloryChart previousCalories={previousCalories}/>
+        <CaloryChart previousCalories={previousCalories} submittedDays={submittedDays}/>
 
         {/* Meal creation form */}
         <MealCreationForm />

@@ -35,7 +35,7 @@ app.use(express.json());
 
 const requestTime = function (request, response, next) {
     const date = new Date()
-    const fullDate = `${date.getDay()}.${date.getMonth()}.${date.getFullYear()}`
+    const fullDate = `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}`
     request.requestTime = fullDate
     next()
   }

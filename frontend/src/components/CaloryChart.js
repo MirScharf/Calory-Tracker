@@ -1,14 +1,15 @@
 import React from "react";
 import Plot from "react-plotly.js";
 
-const CaloryChart = ({ previousCalories }) => {
+const CaloryChart = ({ previousCalories, submittedDays}) => {
      if (!previousCalories || !previousCalories.length){return}
             const lastWeeksCaloricIntake = previousCalories.slice(Math.max(previousCalories.length - 7, 0))
+            const days = submittedDays.slice(Math.max(submittedDays.length - 7, 0))
             const data = [
                 {
                   type: "scatter",
                   mode: "lines+markers",
-                  x: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+                  x: days,
                   y: lastWeeksCaloricIntake, 
                   marker: { color: "blue" },
                 },
@@ -16,7 +17,7 @@ const CaloryChart = ({ previousCalories }) => {
           
             const layout = {
                 title: "Last Week's Caloric Intake",
-                xaxis: { title: "Previous Seven Days"},
+                xaxis: { title: "Previous days on which you submitted"},
                 yaxis: { title: "Calories" },
                 font: { size: 14 },
             };
