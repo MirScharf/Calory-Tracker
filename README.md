@@ -29,6 +29,8 @@ The Calory Tracker Web App is a full-stack application designed to help users tr
 - **Authentication**: JSON Web Tokens (JWT)
 
 ## Usage 
+- start the backend with 'npm run dev' 
+- start the frontend with 'npm start'
 - Register/Log in  with a username and a password 
 - **RecipyHub**: Add Meals to the current Meal List with the "+" button 
 - Submit your caloric Intake for today with the button on top of the current Meal List 
