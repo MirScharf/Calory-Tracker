@@ -23,6 +23,7 @@ const RecipyHub = () => {
     const [checkboxChecked, setCheckboxChecked] = useState(false);
     const [previousCalories, setPreviousCalories] = useState([]);
     const [submittedDays, setSubmittedDays] = useState([]);
+    const [caloryGoal, setCaloryGoal] = useState([]);
     
     // Get all Meals/Recipys from backend
     useLayoutEffect(() => {
@@ -32,7 +33,25 @@ const RecipyHub = () => {
         setAllMeals(mealList)
         }
         getMealsList()
+
+        const getCaloryGoal = async () => {
+            try {
+              const response = await axios({
+                method: 'POST',
+                url: 'http://localhost:5555/user/getCaloryGoal',
+                data: {
+                  user: user,
+                }})
+                setCaloryGoal(response.data.caloryGoal);
+                } catch (error) {console.log(error)}
+                
+          }
+        getCaloryGoal()
+
     }, [user])
+
+   
+    
 
     useEffect(() => {
         const verifyCookie = async () => {
@@ -83,48 +102,6 @@ const RecipyHub = () => {
     useEffect(() => {
         setSum(currentCalories.reduce((accumulator, currentValue) => accumulator + currentValue, 0))    
     } ,[currentCalories])
-
-        
-    const handleSubmitMealCreation = async (e) => {  
-      e.preventDefault();  // Default behaviour would refresh page
-      
-      // Meal creation: form input 
-      const form = e.target;
-      const title = form.querySelector('input[name="title"]').value;
-      const calories = form.querySelector('input[name="calories"]').value;
-      const ingredients = form.querySelector('input[name="ingredients"]').value;
-
-      try {
-        const anyFieldEmpty = !title | !calories | !ingredients;
-        if (anyFieldEmpty){return toast.error("All Fields are required!",{autoClose: 2000})}
-        const response = await axios({
-          method: 'POST',
-          url: 'http://localhost:5555/user/postrecipy',
-          data: {
-            title: title,
-            author: "miroo",
-            ingredients: ingredients,
-            calories: calories,
-          }})
-
-          const { message } = response.data;
-          console.log(message)
-          if (message === "Meal already exists") {
-            return toast.error("Meal already exists", {
-                hideProgressBar: true,
-                autoClose: 2000,
-              }
-          )};
-
-          toast.success("Meal created!",{
-            hideProgressBar: true,
-            autoClose: 1000,
-          })
-          } catch (error) {
-            console.log(error)}
-        getAllMeals()  // Update the List of all Meals
-        
-    }
 
     const [inputValue, setInputValue] = useState({mealName: ""});
       const { mealName } = inputValue;
@@ -248,9 +225,9 @@ const RecipyHub = () => {
         <button type="submit" onClick={handleSubmitcurrentCalories} id="submitCaloryButton">Submit your calory count</button>
         {currentListJsx}
         </div>
-
+        
         {/* Calory Chart component */}
-        <CaloryChart previousCalories={previousCalories} submittedDays={submittedDays}/>
+        <CaloryChart previousCalories={previousCalories} submittedDays={submittedDays} caloryGoal={caloryGoal}/>
 
         {/* Meal creation form */}
         <MealCreationForm />
