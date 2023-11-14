@@ -18,6 +18,7 @@ const userSchema = mongoose.Schema({
         required: true
     },
     caloryIntake: [caloryIntake],
+    caloryGoal: Number,
 },
 {
     timestamps: true,
