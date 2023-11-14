@@ -21,3 +21,14 @@
 p {
     font-weight: bold;
 }
+
+#inputFieldText {
+    margin-top: 1rem;
+}
+
+input {
+    display: block;
+    margin: auto;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
