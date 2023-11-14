@@ -68,7 +68,34 @@ const getCalories = async(request, response) => {
     }
 }
 
+const getCaloryGoal = async(request, response) => {
+    try {
+        const { user } = request.body;
+        const userdata = await User.findOne({ username: user }) 
+        console.log(userdata.caloryGoal);
+        return response.send(userdata)
+    } catch (error) {
+        response.status(500).json({ message: 'Server Error'})
+    }
+}
+
+const postCaloryGoal = async(request, response) => {
+    try {
+        const { username, caloryGoal } = request.body;
+        const userCaloryGoal = await User.findOneAndUpdate(
+            { username: username },  // filter criteria 
+            { $set: { caloryGoal }},
+            { new: true }
+            ) 
+        return response.status(201).send(userCaloryGoal);
+    } catch (error) {
+        response.status(500).json({ message: 'Server Error'})
+    }
+}
+
 router.post('/postrecipy', postRecipy)
 router.post('/postcalories', postCalories)
 router.post('/getcalories', getCalories)
+router.post('/getCaloryGoal', getCaloryGoal)
+router.post('/postCaloryGoal', postCaloryGoal)
 export default router; 
