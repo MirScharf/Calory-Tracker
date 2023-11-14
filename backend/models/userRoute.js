@@ -40,9 +40,9 @@ const postCalories = async(request, response)=> {
         });
         }
         const { user, day, calories } = request.body;
-        const dayExists = await User.findOne({'caloryIntake': {$elemMatch: { day: day }}});
+        const dayExists = await User.findOne({username: user, 'caloryIntake': {$elemMatch: { day: day }}});
         if (dayExists) {
-        return response.send({message: `Already submitted calories for the day on ${day}.`});
+        return response.send({status: false, message: `Already submitted calories for the day on ${day}.`});
         }
 
         const caloryThisDay = await User.findOneAndUpdate(
