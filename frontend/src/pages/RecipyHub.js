@@ -211,7 +211,16 @@ const RecipyHub = () => {
             day: fullDate,
             calories: calories,
         }})
-        console.log(response.data);
+        console.log(response);
+       
+        if (response.data.status === false) {
+            return (
+                toast.error(response.data.message, {
+                    hideProgressBar: true,
+                    autoClose: 2000,
+                }
+            ))
+        }
         setPreviousCalories(getPreviousCalories().calories)
         setSubmittedDays(getPreviousCalories().day)
     }  
