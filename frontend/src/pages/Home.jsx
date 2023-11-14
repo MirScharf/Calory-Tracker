@@ -12,6 +12,7 @@ const Home = () => {
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
   const [username, setUsername] = useState("");
+
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.token) {
@@ -42,6 +43,33 @@ const Home = () => {
     removeCookie("token");
     navigate("/login");
   };
+
+  const [inputValue, setInputValue] = useState({caloryGoal: ""});
+      const { caloryGoal } = inputValue;
+      const handleOnChange = (e) => {
+        const { name, value } = e.target;
+        setInputValue({
+          ...inputValue,
+          [name]: value,
+        });
+    };
+
+  const submitCalories = async () => {
+    try {
+      const response = await axios({
+        method: 'POST',
+        url: 'http://localhost:5555/user/postCaloryGoal',
+        data: {
+          username: username,
+          caloryGoal: caloryGoal,
+        }})
+        if (response.status === 201){
+          toast.success(`Your desired Caloric intake is now set as ${caloryGoal}`)
+        }
+        } catch (error) {
+          console.log(error)}
+  }
+
   const styles = {
     display: "flex",
     justifyContent: "center",
@@ -60,6 +88,14 @@ const Home = () => {
          managing your daily caloric intake is as easy as a few taps. 
          Stay on top of your health goals, one meal at a time. 
          Join today and make every calorie count!</div>
+    <div id="inputFieldText">
+      <label>Set yourself a goal for your daily caloric intake:
+          <input id="caloryGoal" name="caloryGoal" value={caloryGoal} type="text" 
+          placeholder="1800 for example" 
+          onChange={handleOnChange} />
+      </label>
+    </div>
+    <div><button onClick={submitCalories}>Submit</button></div>
     <div className="links">
       <div><Link to="/login">Login</Link></div>
       <div><Link to="/register">Register</Link></div>
