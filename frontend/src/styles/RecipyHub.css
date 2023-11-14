@@ -97,7 +97,10 @@ p {
     margin-left: 5rem;
 }
 
-
+#userEval {
+    background-color: rgb(240, 255, 246);
+    border: solid black 3px;
+}
 
 /* Meal creation form */
 #mealCreationHeadline{
