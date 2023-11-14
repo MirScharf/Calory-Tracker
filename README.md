@@ -29,6 +29,7 @@ The Calory Tracker Web App is a full-stack application designed to help users tr
 - **Authentication**: JSON Web Tokens (JWT)
 
 ## Usage 
+- create .env file with PORT and MONGODB_URL of your mongoDB server
 - start the backend with 'npm run dev' 
 - start the frontend with 'npm start'
 - Register/Log in  with a username and a password 
