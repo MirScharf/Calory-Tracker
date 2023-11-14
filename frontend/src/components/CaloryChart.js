@@ -49,7 +49,7 @@ const CaloryChart = ({ previousCalories, submittedDays, caloryGoal}) => {
       ];
     
       const layout = {
-          title: "Last Week's Caloric Intake",
+          title: "Calory intake history",
           xaxis: { title: "Previous days on which you submitted"},
           yaxis: { title: "Calories" },
           font: { size: 14 },
