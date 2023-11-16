@@ -1,6 +1,6 @@
 # :bento: Calory Tracker Web App
 
-![App Screenshot](recipyHubScreenshot.PNG)
+![output](https://github.com/MirScharf/Calory-Tracker/assets/114858996/00bc86f9-8574-422b-9321-8eb20d6f6e31)
 
 ## Table of Contents
 
