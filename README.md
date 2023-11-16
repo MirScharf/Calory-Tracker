@@ -43,10 +43,10 @@ The Calory Tracker Web App is a full-stack application designed to help users tr
 
 ![App Screenshot](recipyHubScreenshot.PNG)
 - **Home Page**
-  
-![App Screenshot](loginScreenshot.PNG)
+
+![App Screenshot](homePageScreenshot.PNG)  
 - **User Login page**
   
-![App Screenshot](homePageScreenshot.PNG)
+![App Screenshot](loginScreenshot.PNG)
 
 
