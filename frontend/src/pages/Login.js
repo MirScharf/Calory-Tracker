@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import '../styles/Login.css';
 
 const Login = () => {
   const styles = {
@@ -69,7 +70,7 @@ const Login = () => {
 
   return (
     
-  <div style={styles}>
+  <div style={styles} id="loginForm">
     <h3>Login with your Account</h3>
     <div className="login-form">
       <form  onSubmit={handleSubmit}>
