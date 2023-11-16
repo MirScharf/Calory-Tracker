@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios"; // For HTTP-Requests
 import { toast } from "react-toastify"; // For notifications
+import '../styles/Register.css';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -63,8 +64,8 @@ const Register = () => {
     flexDirection: "column",
   };
   return (
-    <div style={styles}>
-    <h3>Register on your Account</h3>
+    <div style={styles} id="loginForm">
+    <h3>Create an Account</h3>
     <div className="login_form">
       <form onSubmit={handleSubmit}>
         <div className="form_group">
