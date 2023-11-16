@@ -39,12 +39,14 @@ The Calory Tracker Web App is a full-stack application designed to help users tr
 - Create and submit your own Recipy's/Meals with the Mealcreation-form on the right
 
 ## Screenshots
-- **User Login page**
-  
-![App Screenshot](homePageScreenshot.PNG)
+- **Recipy Hub**
 
+![App Screenshot](recipyHubScreenshot.PNG)
 - **Home Page**
   
 ![App Screenshot](loginScreenshot.PNG)
+- **User Login page**
+  
+![App Screenshot](homePageScreenshot.PNG)
 
 
